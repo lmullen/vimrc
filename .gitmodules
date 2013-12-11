@@ -1,0 +1,84 @@
+[submodule "bundle/tlib"]
+	path = bundle/tlib
+	url = git://github.com/tomtom/tlib_vim.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = git://github.com/guns/ultisnips.git
+[submodule "bundle/vim-ack"]
+	path = bundle/vim-ack
+	url = git://github.com/mileszs/ack.vim.git
+[submodule "bundle/vim-addon-mw-utils"]
+	path = bundle/vim-addon-mw-utils
+	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/vim-commentary"]
+	path = bundle/vim-commentary
+	url = git://github.com/tpope/vim-commentary.git
+[submodule "bundle/vim-eunuch"]
+	path = bundle/vim-eunuch
+	url = git://github.com/tpope/vim-eunuch.git
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundle/vim-pathogen"]
+	path = bundle/vim-pathogen
+	url = git://github.com/tpope/vim-pathogen.git
+[submodule "bundle/vim-rake"]
+	path = bundle/vim-rake
+	url = git://github.com/tpope/vim-rake.git
+[submodule "bundle/vim-ruby"]
+	path = bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "bundle/vim-speeddating"]
+	path = bundle/vim-speeddating
+	url = git://github.com/tpope/vim-speeddating.git
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "bundle/vim-textobj-rubyblock"]
+	path = bundle/vim-textobj-rubyblock
+	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule "bundle/vim-textobj-user"]
+	path = bundle/vim-textobj-user
+	url = git://github.com/kana/vim-textobj-user.git
+[submodule "bundle/vim-bundler"]
+	path = bundle/vim-bundler
+	url = git://github.com/tpope/vim-bundler.git
+[submodule "bundle/vim-obsession"]
+	path = bundle/vim-obsession
+	url = git://github.com/tpope/vim-obsession.git
+[submodule "bundle/vim-rbenv"]
+	path = bundle/vim-rbenv
+	url = git://github.com/tpope/vim-rbenv.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = https://github.com/ervandew/supertab
+[submodule "bundle/vim-yardoc"]
+	path = bundle/vim-yardoc
+	url = git@github.com:noprompt/vim-yardoc.git
+[submodule "bundle/vim-repeat"]
+	path = bundle/vim-repeat
+	url = git@github.com:tpope/vim-repeat.git
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = git@github.com:bling/vim-airline
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git@github.com:majutsushi/tagbar.git
+[submodule "bundle/vim-bbye"]
+	path = bundle/vim-bbye
+	url = git@github.com:moll/vim-bbye.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git
+[submodule "bundle/ctrlp"]
+	path = bundle/ctrlp
+	url = git@github.com:kien/ctrlp.vim.git
+[submodule "bundle/vim-unimpaired"]
+	path = bundle/vim-unimpaired
+	url = git@github.com:tpope/vim-unimpaired.git
+[submodule "bundle/vim-javascript"]
+	path = bundle/vim-javascript
+	url = git@github.com:pangloss/vim-javascript.git
