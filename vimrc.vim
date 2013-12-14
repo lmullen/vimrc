@@ -220,6 +220,7 @@ let g:airline_theme='solarized'
 let g:airline_enable_syntastic=1
 let g:airline_detect_modified=1
 let g:airline_enable_tagbar=1
+let g:airline_detect_whitespace=0
 
 " UltiSnips
 " -------------------------------------------------------------------
