@@ -25,7 +25,6 @@ iab pphone 978-877-7549
 iab tks Thanks,<CR>Lincoln<CR>
 iab w7c Williams and Colomb
 iab xn Christian
-iab xns Christians
 iab xty Christianity
 iab ypas Religious Pluralism and the American State
 iab PH ProfHacker
