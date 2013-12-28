@@ -19,24 +19,12 @@
 [submodule "bundle/vim-rake"]
 	path = bundle/vim-rake
 	url = git://github.com/tpope/vim-rake.git
-[submodule "bundle/vim-ruby"]
-	path = bundle/vim-ruby
-	url = git://github.com/vim-ruby/vim-ruby.git
 [submodule "bundle/vim-speeddating"]
 	path = bundle/vim-speeddating
 	url = git://github.com/tpope/vim-speeddating.git
-[submodule "bundle/vim-obsession"]
-	path = bundle/vim-obsession
-	url = git://github.com/tpope/vim-obsession.git
-[submodule "bundle/vim-repeat"]
-	path = bundle/vim-repeat
-	url = git@github.com:tpope/vim-repeat.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
-[submodule "bundle/ctrlp"]
-	path = bundle/ctrlp
-	url = git@github.com:kien/ctrlp.vim.git
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
 	url = git@github.com:tpope/vim-unimpaired.git
