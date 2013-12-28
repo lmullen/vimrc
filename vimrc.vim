@@ -49,7 +49,7 @@ set statusline=""
 set statusline+=%t                          " tail/filename
 set statusline+=%m%r%h                      " modified/read only/help
 set statusline+=\ [%{&ff}/%Y]               " line endings/type of file
-set statusline+=\ %{fugitive#statusline()}  " Git status
+" set statusline+=\ %{fugitive#statusline()}  " Git status
 set statusline+=\ [L\:%l\/%L,\%p%%\ C\:%c]  " line/total lines percentage/column
 
 " Viminfo 
@@ -195,7 +195,6 @@ autocmd FileType apache set commentstring=#\ %s   "comments for Apache
 autocmd FileType r set commentstring=#\ %s        "comments for R
 autocmd FileType pandoc set commentstring=<!--\ %s\ -->   "comments for pandoc
 map <C-c> gcc
-map <C-C> gcc
 map <C-\> gcc
 
 " UltiSnips
