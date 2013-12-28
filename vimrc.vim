@@ -21,15 +21,13 @@ set history=1000                            " remember commands and searches
 set undolevels=100                          " use many levels of undo
 set noerrorbells                            " don't beep
 set mouse=a                                 " use mouse in console
-" set clipboard=unnamedplus                   " use system clipboard
 filetype plugin indent on                   " detect filetypes
 set nrformats-=octal
 set shiftround
 set ttimeout
 set ttimeoutlen=50
 set autoread
-set fileformats+=mac
-set tabpagemax=50
+au FocusLost * :wa                          " save when losing focus (gVim)
 
 " Display
 " -------------------------------------------------------------------
@@ -41,7 +39,7 @@ set display+=lastline                       " show partial last lines
 set nolist                                  " don't display space chars
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·  " TextMate style space chars
 set scrolloff=5                             " cursor 5 lines from top or bottom
-" set cursorline                              " highlight current line
+set cursorline                              " highlight current line
 set number
 
 " Status line
@@ -69,7 +67,7 @@ set ignorecase
 set smartcase                               " smart about case sensitivity
 " set hlsearch                                " highlight search terms
 " clear search highlighting
-nmap <silent> <leader>/ :nohlsearch<CR>
+" nmap <silent> <leader>/ :nohlsearch<CR>
 " use very magic mode explicitly
 cnoremap s/ s/\v
 cnoremap %s/ %s/\v
@@ -87,8 +85,8 @@ nnoremap <space> za
 nnoremap ~ K
 nnoremap K ~
 nmap E ge
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <leader>lcd :lcd %:p:h<CR>:pwd<CR>
+" nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+" nnoremap <leader>lcd :lcd %:p:h<CR>:pwd<CR>
 " reselect visual after indent
 vnoremap < <gv
 vnoremap > >gv
@@ -126,6 +124,9 @@ nnoremap [<space> O<ESC>j
 nnoremap ]<space> o<ESC>k
 nnoremap ]n /\V[^\d\+]<CR>
 nnoremap [n ?\V[^\d\+]<CR>
+" Ctrl-v for pasting in insert mode
+imap <C-v> <C-r><C-o>+
+imap <C-c> <CR><Esc>O
 
 " Tab completion
 " -------------------------------------------------------------------
@@ -137,7 +138,7 @@ endif
 " Word count
 " -------------------------------------------------------------------
 nmap <silent> <leader>wc g<C-G>
-nmap <silent> <leader>lwc :w<CR> :!detex % \| wc -w<CR>
+" nmap <silent> <leader>lwc :w<CR> :!detex % \| wc -w<CR>
 
 " Spell check 
 " -------------------------------------------------------------------
@@ -174,18 +175,12 @@ command! -nargs=0 Efunctions e $HOME/.vim/functions.vim
 set backup                                  " backups and swaps
 set backupdir=$HOME/.cache/vim/backup/
 set directory=$HOME/.cache/vim/swap/
-autocmd FileType vim setlocal nowrap
 
 " Pandoc 
 " -------------------------------------------------------------------
 au BufNewFile,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.txt,*.page   set filetype=pandoc
 " Find the space before Pandoc footnotes
 nnoremap <leader><space> /\v^$\n[\^1\]:<CR>:let @/ = ""<CR>
-
-" BibTeX key completion 
-" -------------------------------------------------------------------
-" set dictionary+=$HOME/acad/research/bib/citekeys.txt
-" set complete+=k
 
 " Formating file
 " -------------------------------------------------------------------
@@ -194,33 +189,14 @@ nnoremap <silent> <leader>= mpgg=G`p
 " Run equalprg from the part of the file marked P to the end
 " map <leader>p mc'p=G'c
 
-" Ctrl-P 
-" -------------------------------------------------------------------
-let g:ctrlp_open_new_file = 'r'             " open new files in same window
-nmap <C-B> :CtrlPBuffer<CR>
-let g:ctrlp_use_caching = 0
-let g:ctrlp_clear_cache_on_exit = 1         
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-let g:ctrlp_dotfiles = 0                    " ignore dotfiles and dotdirs
-let g:ctrlp_custom_ignore = {
-  \ 'dir': '\.git$\|\_site$'
-  \ }
-
 " Commentary.vim 
 " -------------------------------------------------------------------
 autocmd FileType apache set commentstring=#\ %s   "comments for Apache
 autocmd FileType r set commentstring=#\ %s        "comments for R
 autocmd FileType pandoc set commentstring=<!--\ %s\ -->   "comments for pandoc
 map <C-c> gcc
+map <C-C> gcc
 map <C-\> gcc
-
-" Airline 
-" -------------------------------------------------------------------
-let g:airline_theme='solarized'
-let g:airline_enable_syntastic=1
-let g:airline_detect_modified=1
-let g:airline_enable_tagbar=1
-let g:airline_detect_whitespace=0
 
 " UltiSnips
 " -------------------------------------------------------------------
@@ -230,44 +206,14 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 
-" Tagbar 
-" -------------------------------------------------------------------
-nnoremap <F8> :TagbarToggle<CR>
-
-" Gundo
-" -------------------------------------------------------------------
-nnoremap <F7> :GundoToggle<CR>
-
 " Syntastic 
 " -------------------------------------------------------------------
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_javascript_checkers=['jshint']
-
-" Vim-R 
-" -------------------------------------------------------------------
-let vimrplugin_screenplugin = 0
-let maplocalleader = "\\"
-let vimrplugin_assign = 0
-let vimrplugin_rnowebchurch = 0
-let vimrplugin_r_args = "--no-restore-data --no-save --quiet"
-let g:vimrplugin_insert_mode_cmds = 0
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
 
 " Temporary
 " -------------------------------------------------------------------
-au FocusLost * :wa                          " save when losing focus (gVim)
-set autoread
 
-" " Bubble single lines
-" nmap <C-Up> ddkP
-" nmap <C-Down> ddp
-" " Bubble multiple lines
-" vmap <C-Up> xkP`[V`]
-" vmap <C-Down> xp`[V`]
 
-" Ctrl-v for pasting
-"
-imap <C-v> <C-r><C-o>+
-imap <C-c> <CR><Esc>O
-
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
