@@ -115,14 +115,11 @@ function! ToggleFootnoteJumping()
 endfunction
 
 command! -nargs=0 BG call ToggleBackground()
-nnoremap <leader>bg :call ToggleBackground()<cr>
 function! ToggleBackground()
   if &background == "dark"
     set background=light
-    :AirlineTheme tomorrow
   else
     set background=dark
-    :AirlineTheme solarized
   endif
 endfunction
 

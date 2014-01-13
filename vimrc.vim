@@ -39,7 +39,6 @@ set display+=lastline                       " show partial last lines
 set nolist                                  " don't display space chars
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·  " TextMate style space chars
 set scrolloff=5                             " cursor 5 lines from top or bottom
-set cursorline                              " highlight current line
 set number
 
 " Status line
@@ -216,4 +215,6 @@ let g:syntastic_warning_symbol='⚠'
 " Temporary
 " -------------------------------------------------------------------
 
+autocmd FileChangedRO * echohl WarningMsg | echo "File changed RO." | echohl None
+autocmd FileChangedShell * echohl WarningMsg | echo "File changed shell." | echohl None
 
