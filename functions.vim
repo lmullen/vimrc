@@ -92,7 +92,7 @@ endfunction
 " iskeyword option. This function toggles the special characters of a 
 " Pandoc footnote in the form [^1] to allow you to jump between 
 " footnotes with the * key.
-nnoremap _fn :call ToggleFootnoteJumping()<CR>
+command! -nargs=0 FN call ToggleFootnoteJumping()
 function! ToggleFootnoteJumping()
   if exists("g:FootnoteJumping") 
     if g:FootnoteJumping == 1
@@ -185,4 +185,9 @@ command! -nargs=0 Todo call Todo()
 function! Todo()
   :cd ~/todo/
   :source Session.vim
+endfunction
+
+command! -nargs=0 DeleteAllBuffers call DeleteAllBuffers()
+function! DeleteAllBuffers()
+  :1,10000bd
 endfunction
