@@ -48,7 +48,7 @@ set statusline=""
 set statusline+=%t                          " tail/filename
 set statusline+=%m%r%h                      " modified/read only/help
 set statusline+=\ [%{&ff}/%Y]               " line endings/type of file
-" set statusline+=\ %{fugitive#statusline()}  " Git status
+set statusline+=\ %{fugitive#statusline()}  " Git status
 set statusline+=\ [L\:%l\/%L,\%p%%\ C\:%c]  " line/total lines percentage/column
 
 " Viminfo 
@@ -75,7 +75,7 @@ vnoremap / /\v
 
 " Folding
 " -------------------------------------------------------------------
-set foldenable
+set nofoldenable
 set foldcolumn=1                            " show where the folds are
 nnoremap <space> za
 
@@ -218,3 +218,5 @@ let g:syntastic_warning_symbol='⚠'
 autocmd FileChangedRO * echohl WarningMsg | echo "File changed RO." | echohl None
 autocmd FileChangedShell * echohl WarningMsg | echo "File changed shell." | echohl None
 
+" Resize the splits if the vim windows is resized
+autocmd VimResized * :wincmd =

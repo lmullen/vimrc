@@ -70,10 +70,16 @@ function! Patristics()
 endfunction
 
 " Commit all changes in research wiki
-command! -nargs=0 Wiki call CommitToWiki()
-nnoremap _wc :call CommitToWiki()<CR>
+command! -nargs=0 WikiCommit call CommitToWiki()
 function! CommitToWiki()
   :silent !cd ~/acad/research && rake wiki
+  :redraw!
+endfunction
+
+" Push all changes in research wiki
+command! -nargs=0 WikiPush call PushWiki()
+function! PushWiki()
+  :silent !cd ~/acad/research && rake pushwiki
   :redraw!
 endfunction
 
@@ -132,7 +138,7 @@ endfunction
 " Open the current note file in the browser
 command! -nargs=0 Wo call OpenCurrentNoteInWiki()
 function! OpenCurrentNoteInWiki()
- silent !open "http://mullen-mac.local:5001/%:r"
+ silent !xdg-open "http://localhost:5001/%:r"
 endfunction
 
 
@@ -183,7 +189,7 @@ endfunction
 
 command! -nargs=0 Todo call Todo()
 function! Todo()
-  :cd ~/todo/
+  :cd ~/notes/
   :source Session.vim
 endfunction
 

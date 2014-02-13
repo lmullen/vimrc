@@ -36,19 +36,6 @@ snippet ![:* "![:*"
 ![${1:id}]: ${2:`!v @*`}
 endsnippet
 
-snippet codeb "Simple codeblock"
-~~~~~ {.${1:ruby}}
-$0
-~~~~~
-
-endsnippet
-
-snippet codeblock "codeblock"
-~~~~~ {${1:.lang} ${2:.numberLines} startFrom="${3:1}"}
-${4:code}
-~~~~~
-endsnippet
-
 snippet === "==="
 `!v repeat('=', strlen(getline(line(".") - 1)))`
 ${1}
@@ -77,52 +64,12 @@ ${4:quote}
 {% endblockquote %}
 endsnippet
 
-snippet bt-codeblock-short "bt-codeblock-short"
-```!v 
-${1:code_snippet}
-```
-endsnippet
-
-snippet bt-codeblock-full "bt-codeblock-full"
-```!v  ${1:language} ${2:title} ${3:URL} ${4:link_text}
-${5:code_snippet}
-```
-endsnippet
-
-snippet codeblock-short "codeblock-short"
-{% codeblock %}
-${1:code_snippet}
-{% endcodeblock %}
-endsnippet
-
-snippet codeblock-full "codeblock-full"
-{% codeblock ${1:title} lang:${2:language} ${3:URL} ${4:link_text} %}
-${5:code_snippet}
-{% endcodeblock %}
-endsnippet
-
-snippet gist-full "gist-full"
-{% gist ${1:gist_id} ${2:filename} %}
-endsnippet
-
-snippet gist-short "gist-short"
-{% gist ${1:gist_id} %}
-endsnippet
-
 snippet img "img"
 {% img ${1:class} ${2:URL} ${3:width} ${4:height} ${5:title_text} ${6:alt_text} %}
 endsnippet
 
 snippet youtube "youtube"
 {% youtube ${1:video_id} %}
-endsnippet
-
-# The quote should appear only once in the text. It is inherently part of it.
-# See http://octopress.org/docs/plugins/pullquote/ for more info.
-snippet pullquote "pullquote"
-{% pullquote %}
-${1:text} {" ${2:quote} "} ${3:text}
-{% endpullquote %}
 endsnippet
 
 snippet article "BibTeX article"
@@ -141,49 +88,6 @@ snippet article "BibTeX article"
 ~~~~~
 
 endsnippet
-
-snippet book "BibTeX book"
-~~~~~{.bib}
-@Book {         ${1},
-  author      = {${2}},
-  title       = {${3}},
-  editor      = {${4}},
-  address     = {${5}},
-  publisher   = {${6}},
-  year        = {${7}},
-}
-~~~~~
-
-endsnippet
-
-snippet thesis "BibTeX thesis"
-~~~~~{.bib}
-@PhDThesis {   ${1},
-  author      = {${2}},
-  title       = {${3}},
-  school      = {${4}},
-  year        = {${5}},
-}
-~~~~~
-
-endsnippet
-
-snippet chapter "BibTeX chapter"
-~~~~~{.bib}
-@InCollection {       ${1},
-  author      = {${2}},
-  title       = {${3}},
-  booktitle   = {${4}},
-  editor      = {${5}},
-  address     = {${6}},
-  publisher   = {${7}},
-  year        = {${8}},
-  pages	      = {${9}},
-}
-~~~~~
-
-endsnippet
-
 
 snippet cat "Gitit categories"
 ---
@@ -294,20 +198,6 @@ snippet c) "Copyright symbol"
 ©
 endsnippet
 
-snippet bib "BibTeX codeblock" !b
-~~~~~{.bib}
-$1
-~~~~~
-$0
-endsnippet
-
-snippet bib* "BibTeX codeblock" !b
-~~~~~{.bib}
-`!v @*`
-~~~~~
-$0
-endsnippet
-
 snippet dtag 
 diss-ch6, secondary
 endsnippet
@@ -350,4 +240,11 @@ endsnippet
 
 snippet note "**Note**: "
 **Note**: 
+endsnippet
+
+snippet highlight "Highlight block"
+{% highlight ${1:ruby} %}
+$0
+{% endhighlight %}
+
 endsnippet
