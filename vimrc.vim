@@ -131,7 +131,7 @@ imap <C-c> <CR><Esc>O
 " -------------------------------------------------------------------
 if has('wildmenu')
   set wildmenu
-  set wildignore+=*.aux,*.bak,*.bbl,*.blg,*.class,*.doc,*.docx,*.dvi,*.fdb_latexmk,*.fls,*.idx,*.ilg,*.ind,*.log,*.out,*.pdf,*.png,*.pyc,*.Rout,*.rtf,*.swp,*.synctex.gz,*.toc,*.zip,*/.hg/*,*/.svn/*,*.mp3,*/_site/*,*~,.DS_Store,*/public/*,*Session.vim*
+  set wildignore+=*.aux,*.bak,*.bbl,*.blg,*.class,*.doc,*.docx,*.dvi,*.fdb_latexmk,*.fls,*.idx,*.ilg,*.ind,*.log,*.out,*.pdf,*.png,*.pyc,*.Rout,*.rtf,*.swp,*.synctex.gz,*.toc,*.zip,*/.hg/*,*/.svn/*,*.mp3,*/_site/*,*~,.DS_Store,*/public/*,*Session.vim*,*.jpeg,*.jpg,*.gif,*.svg
 endif
 
 " Word count
@@ -162,8 +162,8 @@ set autoindent                              " always set autoindenting on
 set copyindent                              " copy prev indentation
 set shiftround                              " use shiftwidth when indenting
 " Use Q to format paragraph
-vmap Q gq
-nmap Q gwap
+vnoremap Q gq
+nnoremap Q gwap
 set formatoptions=tqcwn                     " see :help fo-table
 
 " Vimrc
@@ -174,6 +174,11 @@ command! -nargs=0 Efunctions e $HOME/.vim/functions.vim
 set backup                                  " backups and swaps
 set backupdir=$HOME/.cache/vim/backup/
 set directory=$HOME/.cache/vim/swap/
+" automatically reload vimrc
+augroup reload_vimrc " {
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
 
 " Pandoc 
 " -------------------------------------------------------------------
@@ -233,6 +238,6 @@ autocmd FileChangedShell * echohl WarningMsg | echo "File changed shell." | echo
 autocmd VimResized * :wincmd =
 
 " nnoremap <C-p> "+p
-nnoremap <C-P> "+p
+" nnoremap <C-P> "+p
 vnoremap <C-C> "+y
 
