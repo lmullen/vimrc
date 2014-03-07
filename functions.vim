@@ -8,8 +8,8 @@ function! CleanMarkdown()
   :%s/“/"/ge
   :%s/‘/'/ge
   :%s/”/"/ge
-  :%s/``/"/ge
-  :%s/''/"/ge
+  " :%s/``/"/ge
+  " :%s/''/"/ge
 endfunction
 
 " put an en dash between number ranges
@@ -141,7 +141,6 @@ function! OpenCurrentNoteInWiki()
  silent !xdg-open "http://localhost:5001/%:r"
 endfunction
 
-
 " Copy the current filename without extension
 command! -nargs=0 FN call CopyFilename()
 function! CopyFilename()
@@ -163,37 +162,8 @@ function! AlignOnRAssign()
   :Tabularize /<-
 endfunction
 
-command! -nargs=0 ToggleHJKL call ToggleHJKL() 
-function! ToggleHJKL()
-  if exists("g:ToggleHJKL") 
-    if g:ToggleHJKL == 1
-      map h h
-      map j j
-      map k k
-      map l l
-    else
-      map h <nop>
-      map j <nop>
-      map k <nop>
-      map l <nop>
-      let g:ToggleHJKL = 1
-    endif
-  else 
-    map h <nop>
-    map j <nop>
-    map k <nop>
-    map l <nop>
-    let g:ToggleHJKL = 1
-  endif
-endfunction
-
-command! -nargs=0 Todo call Todo()
-function! Todo()
-  :cd ~/notes/
-  :source Session.vim
-endfunction
-
 command! -nargs=0 DeleteAllBuffers call DeleteAllBuffers()
 function! DeleteAllBuffers()
   :1,10000bd
 endfunction
+
