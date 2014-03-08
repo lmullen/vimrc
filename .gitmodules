@@ -55,3 +55,6 @@
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = git@github.com:bling/vim-airline.git
+[submodule "bundle/csv"]
+	path = bundle/csv
+	url = git@github.com:chrisbra/csv.vim.git
