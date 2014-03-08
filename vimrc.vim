@@ -228,6 +228,16 @@ let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_dotfiles = 0                    " ignore dotfiles and dotdirs
 let g:ctrlp_custom_ignore = { 'dir': '\.git$\|\_site$' }
 
+" Airline
+" -------------------------------------------------------------------
+let g:airline_theme='solarized'
+" let g:airline_enable_syntastic=1
+" let g:airline_detect_modified=1
+" let g:airline_enable_tagbar=0
+let g:airline_detect_whitespace=0
+" let g:airline_left_sep='>'
+" let g:airline_right_sep='<'
+
 " Temporary
 " -------------------------------------------------------------------
 
