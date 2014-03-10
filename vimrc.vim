@@ -208,7 +208,6 @@ let g:UltiSnipsEditSplit = 'horizontal'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 " let g:UltiSnipsNoPythonWarning = 1
 
 " Syntastic 
@@ -235,9 +234,9 @@ let g:airline_detect_paste=0
 let g:airline_detect_whitespace=0
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
-let g:airline_powerline_fonts=0
-" let g:airline_symbols.linenr = '␤'
-" let g:airline_symbols.branch = '⎇'
+" let g:airline_powerline_fonts=1
+let g:airline_symbols_linenr = '␤'
+let g:airline_symbols_branch = '⎇'
 
 " Temporary
 " -------------------------------------------------------------------
