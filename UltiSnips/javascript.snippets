@@ -1,0 +1,12 @@
+snippet lfosm "Open Street Maps layer"
+var map = L.map('viz');
+var osm = new L.TileLayer(
+  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  {attribution:
+    'Map data: <a href="http://www.openstreetmap.org/">OpenStreetMap</a>'});
+map.addLayer(osm);
+endsnippet
+
+snippet lfview "Leaflet: set map lat, long, zoom"
+map.setView(new L.LatLng(39.8, -95), 4);
+endsnippet
