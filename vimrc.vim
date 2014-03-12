@@ -238,6 +238,21 @@ let g:airline_right_sep = '◀'
 let g:airline_symbols_linenr = '␤'
 let g:airline_symbols_branch = '⎇'
 
+" NERDTree
+" -------------------------------------------------------------------
+" Automatically open NERDTree
+" autocmd vimenter * if !argc() | NERDTree | endif
+" Close Vim if NERDTree is the only open buffer
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Ignore certain files
+let NERDTreeIgnore=['\.pdf$','\.vim$', '\~$']
+let NERDTreeMinimalUI = 1
+map <F3> :NERDTreeToggle<CR>
+
+" TagBar
+" -------------------------------------------------------------------
+map <F4> :TagbarToggle<CR>
+ 
 " Temporary
 " -------------------------------------------------------------------
 
@@ -250,4 +265,5 @@ autocmd VimResized * :wincmd =
 " nnoremap <C-p> "+p
 " nnoremap <C-P> "+p
 vnoremap <C-C> "+y
+
 
