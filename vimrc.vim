@@ -249,10 +249,50 @@ let NERDTreeIgnore=['\.pdf$','\.vim$', '\~$']
 let NERDTreeMinimalUI = 1
 map <F3> :NERDTreeToggle<CR>
 
+
 " TagBar
 " -------------------------------------------------------------------
 map <F4> :TagbarToggle<CR>
- 
+
+" Run scripts from Vim
+" from http://www.oinksoft.com/blog/view/6/
+let ft_stdout_mappings = {
+      \'applescript': 'osascript',
+      \'bash': 'bash',
+      \'bc': 'bc',
+      \'haskell': 'runghc',
+      \'javascript': 'node',
+      \'lisp': 'sbcl',
+      \'nodejs': 'node',
+      \'ocaml': 'ocaml',
+      \'perl': 'perl',
+      \'php': 'php',
+      \'python': 'python',
+      \'ruby': 'ruby',
+      \'scheme': 'scheme',
+      \'sh': 'sh',
+      \'sml': 'sml',
+      \'spice': 'ngspice'
+      \}
+
+for ft_name in keys(ft_stdout_mappings)
+  execute 'autocmd Filetype ' . ft_name . ' nnoremap <buffer> <C-x> :write !'
+        \. ft_stdout_mappings[ft_name] . '<CR>'
+endfor
+
+let ft_execute_mappings = {
+      \'c': 'gcc -o %:r -Wall -std=c99 % && ./%:r',
+      \'erlang': 'escript %',
+      \'pascal': 'fpc % && ./%:r',
+      \'pandoc': 'pandoc -t html --standalone % -o /tmp/pandoc-temp.html && pandoc % -o /tmp/pandoc-temp.pdf'
+      \}
+
+for ft_name in keys(ft_execute_mappings)
+  execute 'autocmd FileType ' . ft_name
+        \. ' nnoremap <buffer> <C-x> :write \| !'
+        \. ft_execute_mappings[ft_name] . '<CR>'
+endfor
+
 " Temporary
 " -------------------------------------------------------------------
 
