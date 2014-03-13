@@ -12,4 +12,14 @@ snippet server "Rake task for server"
 task :server do
   sh "ruby -run -e httpd . -p 4000"
 end
+$0
 endsnippet
+
+snippet "sys(tem)?" "system %{}" r
+system %{${1:command}}
+endsnippet
+
+snippet "sh(ell)?" "shell %{}" r
+sh %{${1:command}}
+endsnippet
+
