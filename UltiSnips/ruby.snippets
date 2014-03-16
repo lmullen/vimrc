@@ -15,11 +15,23 @@ end
 $0
 endsnippet
 
-snippet "sys(tem)?" "system %{}" r
-system %{${1:command}}
+snippet "sys(tem)?" "system %[]" r
+system %[${1:command}]
 endsnippet
 
-snippet "sh(ell)?" "shell %{}" r
-sh %{${1:command}}
+snippet "sh(ell)?" "shell %[]" r
+sh %[${1:command}]
 endsnippet
 
+snippet "okf(ail)?" "ok_fail" r
+def ok_fail(condition)
+	puts condition ? "OK" : "FAILED"
+end
+endsnippet
+
+snippet scp "scp a file"
+task :push => ${1:filename} do
+	puts "Copying file to server..."
+	ok_fail system %[scp #{$1} reclaim:~/www/lincolnmullen.com/files]
+end
+endsnippet
