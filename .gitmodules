@@ -64,3 +64,12 @@
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = git://github.com/majutsushi/tagbar
+[submodule "budle/vim-json"]
+	path = budle/vim-json
+	url = git@github.com:elzr/vim-json.git
+[submodule "bundle/vim-json"]
+	path = bundle/vim-json
+	url = git@github.com:elzr/vim-json.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = git@github.com:godlygeek/tabular.git
