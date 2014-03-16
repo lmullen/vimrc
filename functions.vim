@@ -138,13 +138,13 @@ endfunction
 " Open the current note file in the browser
 command! -nargs=0 Wo call OpenCurrentNoteInWiki()
 function! OpenCurrentNoteInWiki()
- silent !xdg-open "http://localhost:5001/%:r"
+  silent !xdg-open "http://localhost:5001/%:r"
 endfunction
 
 " Copy the current filename without extension
 command! -nargs=0 FN call CopyFilename()
 function! CopyFilename()
- let @* = expand("%:r") 
+  let @* = expand("%:r") 
 endfunction
 
 command! -nargs=0 Aeql call AlignOnEqualSign()
@@ -167,3 +167,14 @@ function! DeleteAllBuffers()
   :1,10000bd
 endfunction
 
+" Open the current file in the browser with the file system
+command! -nargs=0 OpenInChromeWithFileSystem call OpenInChromeWithFileSystem()
+function! OpenInChromeWithFileSystem()
+  silent !google-chrome "%:p"
+endfunction
+"
+" Open the current note file in the browser with localhost
+command! -nargs=0 OpenInChromeWithLocalhost call OpenInChromeWithLocalhost()
+function! OpenInChromeWithLocalhost()
+  silent !google-chrome "http://localhost:4000/%"
+endfunction
