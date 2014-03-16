@@ -205,10 +205,11 @@ vnoremap <C-c> gcc<esc>
 " UltiSnips
 " -------------------------------------------------------------------
 let g:UltiSnipsEditSplit = 'horizontal'
-let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " let g:UltiSnipsNoPythonWarning = 1
+map <F4> :UltiSnipsEdit<CR>
 
 " Syntastic 
 " -------------------------------------------------------------------
@@ -232,9 +233,13 @@ let g:ctrlp_custom_ignore = { 'dir': '\.git$\|\_site$' }
 let g:airline_theme='solarized'
 let g:airline_detect_paste=0
 let g:airline_detect_whitespace=0
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '◀'
-" let g:airline_powerline_fonts=1
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '◀'
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
 let g:airline_symbols_linenr = '␤'
 let g:airline_symbols_branch = '⎇'
 
@@ -245,14 +250,14 @@ let g:airline_symbols_branch = '⎇'
 " Close Vim if NERDTree is the only open buffer
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Ignore certain files
-let NERDTreeIgnore=['\.pdf$','\.vim$', '\~$']
-let NERDTreeMinimalUI = 1
-map <F3> :NERDTreeToggle<CR>
+" let NERDTreeIgnore=['\.pdf$','\.vim$', '\~$']
+" let NERDTreeMinimalUI = 1
+" map <F3> :NERDTreeToggle<CR>
 
 
 " TagBar
 " -------------------------------------------------------------------
-map <F4> :TagbarToggle<CR>
+map <F3> :TagbarToggle<CR>
 
 " Run scripts from Vim
 " from http://www.oinksoft.com/blog/view/6/
@@ -293,6 +298,16 @@ for ft_name in keys(ft_execute_mappings)
         \. ft_execute_mappings[ft_name] . '<CR>'
 endfor
 
+" Vim-JSON
+" -------------------------------------------------------------------
+let g:vim_json_syntax_conceal = 0
+
+" Tabular
+" -------------------------------------------------------------------
+nnoremap <leader>t= :Tabularize /=<CR>
+nnoremap <leader>t, :Tabularize /,<CR>
+nnoremap <leader>t: :Tabularize /:\zs<CR>
+
 " Temporary
 " -------------------------------------------------------------------
 
@@ -306,4 +321,37 @@ autocmd VimResized * :wincmd =
 " nnoremap <C-P> "+p
 vnoremap <C-C> "+y
 
+" Convert pandoc buffer to HTML and copy to system clipboard
+autocmd FileType pandoc nnoremap <buffer> <C-S-x> :write \| let @+ = system("pandoc -t html " . shellescape(expand("%:p")))<CR>
 
+" nnoremap <F6> "+
+nnoremap <F7> "+p
+vnoremap <F8> "+y
+
+" Make YouCompleteMe and UltiSnips play nice
+" -------------------------------------------------------------------
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips_JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsExpandTrigger ="<c-e>"
+
+"" YouCompleteMe
+" let g:ycm_key_list_previous_completion=['<Up>']
+
+"" Ultisnips
+" let g:UltiSnipsExpandTrigger="<c-tab>"
+" let g:UltiSnipsListSnippets="<c-s-tab>"
