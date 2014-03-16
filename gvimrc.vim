@@ -10,3 +10,6 @@ set guifont=PragmataPro\ 12
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
+
+" Ctrl Z undoes rather than minimizes
+noremap <C-z> u
