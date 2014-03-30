@@ -205,7 +205,7 @@ vnoremap <C-c> gcc<esc>
 " UltiSnips
 " -------------------------------------------------------------------
 let g:UltiSnipsEditSplit = 'horizontal'
-" let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " let g:UltiSnipsNoPythonWarning = 1
@@ -328,30 +328,3 @@ autocmd FileType pandoc nnoremap <buffer> <C-S-x> :write \| let @+ = system("pan
 nnoremap <F7> "+p
 vnoremap <F8> "+y
 
-" Make YouCompleteMe and UltiSnips play nice
-" -------------------------------------------------------------------
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips_JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsExpandTrigger ="<c-e>"
-
-"" YouCompleteMe
-" let g:ycm_key_list_previous_completion=['<Up>']
-
-"" Ultisnips
-" let g:UltiSnipsExpandTrigger="<c-tab>"
-" let g:UltiSnipsListSnippets="<c-s-tab>"
