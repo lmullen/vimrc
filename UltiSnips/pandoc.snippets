@@ -269,3 +269,11 @@ snippet citation "Citation for wiki"
 
 $0
 endsnippet
+
+snippet gaevent "Google Analytics event"
+onclick="ga('send', 'event', { 'eventCategory': '${1:PDF}', 'eventAction': '${2:Download}', 'eventLabel': '${3:Filename}', 'page': '${4:/path/to/download}' });"
+endsnippet
+
+snippet figure "{% figure %}" 
+{% figure ${1:filename} svg,png,pdf "${2:caption}" %}
+endsnippet

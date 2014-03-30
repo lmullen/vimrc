@@ -10,3 +10,22 @@ endsnippet
 snippet lfview "Leaflet: set map lat, long, zoom"
 map.setView(new L.LatLng(39.8, -95), 4);
 endsnippet
+
+snippet randomData "Function to generate random data points"
+function randomData(numPoints) { 
+  var data = [];
+  random = function() {return Math.floor(Math.random() * 100);};
+  for (i = 0; i < numPoints; i++) {
+    data.push({
+      x: random(),
+      y: random(),
+      z: random()
+    });
+  }
+  return data;
+}
+endsnippet
+
+snippet con(sole)? "console.log();" r
+console.log($0);
+endsnippet
