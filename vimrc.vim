@@ -325,6 +325,6 @@ vnoremap <C-C> "+y
 autocmd FileType pandoc nnoremap <buffer> <C-S-x> :write \| let @+ = system("pandoc -t html " . shellescape(expand("%:p")))<CR>
 
 " nnoremap <F6> "+
-nnoremap <F7> "+p
-vnoremap <F8> "+y
+vnoremap <F7> "+y
+nnoremap <F8> "+p
 
