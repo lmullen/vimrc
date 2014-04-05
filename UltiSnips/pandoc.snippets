@@ -132,20 +132,24 @@ book-reviewed: "${7}"
 ${8}
 endsnippet
 
-snippet mk "Mark {TODO}"
-{${1:TODO}} ${2}
+snippet mk "Mark {MARK: with explanation}"
+{${1:PLACEHOLDER}: ${2:explanation}} $0
+endsnippet
+
+snippet mkt "Mark {TODO}"
+{TODO} $0
 endsnippet
 
 snippet mkf "Mark {FACT}"
-{FACT} ${1}
+{FACT} $0
 endsnippet
 
 snippet mkn "Mark {NEXT}"
-{NEXT} ${1}
+{NEXT} $0
 endsnippet
 
 snippet mkp "Mark {PAGE}"
-{PAGE} ${1}
+{PAGE} $0
 endsnippet
 
 snippet % "Pandoc header" !b
