@@ -6,3 +6,4 @@ setlocal equalprg=pandoc\ -t\ markdown\ --reference-links\ --atx-headers\ --stan
 
 " add all tags in the style {word} in current document to quickfix list
 nnoremap <leader>{ :vimgrep /\v\{[A-Z]+(:\_.{-})?\}/ %<CR>:copen<CR>
+
