@@ -5,4 +5,4 @@ setlocal textwidth=72
 setlocal equalprg=pandoc\ -t\ markdown\ --reference-links\ --atx-headers\ --standalone
 
 " add all tags in the style {word} in current document to quickfix list
-nnoremap <leader>{ :vimgrep /{\w\+}/ %<CR>:copen<CR>
+nnoremap <leader>{ :vimgrep /\v\{[A-Z]+(\:\_.+)?\}/ %<CR>:copen<CR>

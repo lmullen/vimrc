@@ -1,4 +1,5 @@
 "extra Pandoc highlighting
 
-match Error '{[A-Z]\+}'
+" Place holders of form {NOTE: Optional text here}
+match Error /\v\{[A-Z]+(\:\_.+)?\}/
 
