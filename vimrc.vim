@@ -121,8 +121,8 @@ nnoremap k gk
 " nnoremap ]A :last<CR>
 nnoremap [<space> O<ESC>j
 nnoremap ]<space> o<ESC>k
-nnoremap ]n /\V[^\d\+]<CR>
-nnoremap [n ?\V[^\d\+]<CR>
+nnoremap ]N /\V[^\d\+]<CR>
+nnoremap [N ?\V[^\d\+]<CR>
 " Ctrl-v for pasting in insert mode
 imap <C-v> <C-r><C-o>+
 imap <C-c> <CR><Esc>O
@@ -136,7 +136,7 @@ endif
 
 " Word count
 " -------------------------------------------------------------------
-nmap <silent> <leader>wc g<C-G>
+" nmap <silent> <leader>wc g<C-G>
 " nmap <silent> <leader>lwc :w<CR> :!detex % \| wc -w<CR>
 
 " Spell check 
@@ -217,6 +217,7 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
+" let g:syntastic_check_on_wq = 0
 
 " Ctrl-P 
 " -------------------------------------------------------------------
@@ -237,23 +238,11 @@ let g:airline_detect_whitespace=0
 " let g:airline_right_sep = '◀'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols_linenr = '␤'
-let g:airline_symbols_branch = '⎇'
-
-" NERDTree
-" -------------------------------------------------------------------
-" Automatically open NERDTree
-" autocmd vimenter * if !argc() | NERDTree | endif
-" Close Vim if NERDTree is the only open buffer
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" Ignore certain files
-" let NERDTreeIgnore=['\.pdf$','\.vim$', '\~$']
-" let NERDTreeMinimalUI = 1
-" map <F3> :NERDTreeToggle<CR>
-
+" if !exists('g:airline_symbols')
+"     let g:airline_symbols = {}
+" endif
+" let g:airline_symbols_linenr = '␤'
+" let g:airline_symbols_branch = '⎇'
 
 " TagBar
 " -------------------------------------------------------------------
@@ -281,7 +270,7 @@ let ft_stdout_mappings = {
       \}
 
 for ft_name in keys(ft_stdout_mappings)
-  execute 'autocmd Filetype ' . ft_name . ' nnoremap <buffer> <C-x> :write !'
+  execute 'autocmd Filetype ' . ft_name . ' nnoremap <buffer> <F5> :write !'
         \. ft_stdout_mappings[ft_name] . '<CR>'
 endfor
 
@@ -289,12 +278,12 @@ let ft_execute_mappings = {
       \'c': 'gcc -o %:r -Wall -std=c99 % && ./%:r',
       \'erlang': 'escript %',
       \'pascal': 'fpc % && ./%:r',
-      \'pandoc': 'pandoc -t html --standalone % -o /tmp/pandoc-temp.html && pandoc % -o /tmp/pandoc-temp.pdf'
+      \'pandoc': 'pandoc -t html %'
       \}
 
 for ft_name in keys(ft_execute_mappings)
   execute 'autocmd FileType ' . ft_name
-        \. ' nnoremap <buffer> <C-x> :write \| !'
+        \. ' nnoremap <buffer> <F5> :write \| !'
         \. ft_execute_mappings[ft_name] . '<CR>'
 endfor
 
@@ -328,3 +317,4 @@ autocmd FileType pandoc nnoremap <buffer> <C-S-x> :write \| let @+ = system("pan
 vnoremap <F7> "+y
 nnoremap <F8> "+p
 
+" set clipboard=unnamedplus

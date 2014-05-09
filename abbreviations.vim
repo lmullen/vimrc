@@ -11,7 +11,6 @@ iab 20c twentieth century
 iab 21C twenty-first-century
 iab 21c twenty-first century
 iab Afam African-American
-iab CC Catholic Church
 iab Chp Chapter
 iab PH ProfHacker
 iab RCC Roman Catholic Church
