@@ -68,10 +68,10 @@ set smartcase                               " smart about case sensitivity
 " clear search highlighting
 " nmap <silent> <leader>/ :nohlsearch<CR>
 " use very magic mode explicitly
-cnoremap s/ s/\v
-cnoremap %s/ %s/\v
-nnoremap / /\v
-vnoremap / /\v
+" cnoremap s/ s/\v
+" cnoremap %s/ %s/\v
+" nnoremap / /\v
+" vnoremap / /\v
 
 " Folding
 " -------------------------------------------------------------------
@@ -206,10 +206,11 @@ vnoremap <C-c> gcc<esc>
 " -------------------------------------------------------------------
 let g:UltiSnipsEditSplit = 'horizontal'
 let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsListSnippets="<c-s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " let g:UltiSnipsNoPythonWarning = 1
-map <F4> :UltiSnipsEdit<CR>
+map <F5> :UltiSnipsEdit<CR>
 
 " Syntastic 
 " -------------------------------------------------------------------
@@ -228,6 +229,7 @@ let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_dotfiles = 0                    " ignore dotfiles and dotdirs
 let g:ctrlp_custom_ignore = { 'dir': '\.git$\|\_site$' }
+nnoremap <F4> :CtrlPTag<cr>
 
 " Airline
 " -------------------------------------------------------------------
@@ -318,3 +320,31 @@ vnoremap <F7> "+y
 nnoremap <F8> "+p
 
 " set clipboard=unnamedplus
+"
+let g:ycm_add_preview_to_completeopt=0
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-e>"
+" this mapping Enter key to <C-y> to chose the current highlight item 
+" and close the selection list, same as other IDEs.
+" CONFLICT with some plugins like tpope/Endwise
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+

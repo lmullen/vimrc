@@ -8,6 +8,7 @@ function! CleanMarkdown()
   :%s/“/"/ge
   :%s/‘/'/ge
   :%s/”/"/ge
+  :%s///ge
   " :%s/``/"/ge
   " :%s/''/"/ge
 endfunction
