@@ -163,9 +163,14 @@ function! AlignOnRAssign()
   :Tabularize /<-
 endfunction
 
-command! -nargs=0 DeleteAllBuffers call DeleteAllBuffers()
-function! DeleteAllBuffers()
+command! -nargs=0 DeleteEveryBuffer call DeleteEveryBuffer()
+function! DeleteEveryBuffer()
   :1,10000bd
+endfunction
+
+command! -nargs=0 DeleteCurrentBuffer call DeleteCurrentBuffer()
+function! DeleteCurrentBuffer()
+  :bp|bd #
 endfunction
 
 " Open the current file in the browser with the file system
@@ -179,3 +184,4 @@ command! -nargs=0 OpenInChromeWithLocalhost call OpenInChromeWithLocalhost()
 function! OpenInChromeWithLocalhost()
   silent !google-chrome "http://localhost:4000/%"
 endfunction
+
