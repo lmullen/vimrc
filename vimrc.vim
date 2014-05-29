@@ -67,9 +67,8 @@ set statusline+=%*
 set statusline+=%#warningmsg#
 set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
 set statusline+=%*
-set statusline+=B\:%n\                      " buffer number
-set statusline+=%c,                         " cursor column
-set statusline+=%l/%L                       " cursor line/total lines
+set statusline+=%02c,                       " cursor column
+set statusline+=%03l/%03L                   " cursor line/total lines
 set statusline+=\ %P                        " percent through file
 
 " Viminfo 
@@ -169,8 +168,7 @@ au BufNewFile,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.t
 nnoremap <leader><space> /\v^$\n[\^1\]:<CR>:let @/ = ""<CR>
 " Convert pandoc buffer to HTML and copy to system clipboard
 autocmd FileType markdown nnoremap <buffer> <C-S-x> :write \| let @+ = system("pandoc -t html " . shellescape(expand("%:p")))<CR>
-
-let g:pandoc_syntax_dont_use_conceal_for_rules = ["ellipses", "quotes", "dashes", "atx"]
+let g:pandoc_use_conceal = 0
 
 " Formating file
 " -------------------------------------------------------------------
