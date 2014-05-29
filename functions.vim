@@ -84,43 +84,6 @@ function! PushWiki()
   :redraw!
 endfunction
 
-" Make the BibTeX bibliography
-command! -nargs=0 Bib call MakeBib()
-nnoremap _bib :call MakeBib()<CR>
-function! MakeBib()
-  :silent !cd ~/acad/research && rake bib
-  :redraw!
-endfunction
-
-" Find related Pandoc footnote numbers
-" -------------------------------------------------------------------
-" Vim's * key searches for the next instance of the word under the 
-" cursor; Vim decides what counts as the boundary of a word with the 
-" iskeyword option. This function toggles the special characters of a 
-" Pandoc footnote in the form [^1] to allow you to jump between 
-" footnotes with the * key.
-command! -nargs=0 FN call ToggleFootnoteJumping()
-function! ToggleFootnoteJumping()
-  if exists("g:FootnoteJumping") 
-    if g:FootnoteJumping == 1
-      set iskeyword-=[
-      set iskeyword-=]
-      set iskeyword-=^
-      let g:FootnoteJumping = 0
-    else
-      set iskeyword+=[
-      set iskeyword+=]
-      set iskeyword+=^
-      let g:FootnoteJumping = 1
-    endif
-  else 
-    set iskeyword+=[
-    set iskeyword+=]
-    set iskeyword+=^
-    let g:FootnoteJumping = 1
-  endif
-endfunction
-
 command! -nargs=0 BG call ToggleBackground()
 function! ToggleBackground()
   if &background == "dark"
@@ -140,12 +103,6 @@ endfunction
 command! -nargs=0 Wo call OpenCurrentNoteInWiki()
 function! OpenCurrentNoteInWiki()
   silent !xdg-open "http://localhost:5001/%:r"
-endfunction
-
-" Copy the current filename without extension
-command! -nargs=0 FN call CopyFilename()
-function! CopyFilename()
-  let @* = expand("%:r") 
 endfunction
 
 command! -nargs=0 DeleteEveryBuffer call DeleteEveryBuffer()
