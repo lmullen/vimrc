@@ -13,9 +13,6 @@
 [submodule "bundle/vim-pathogen"]
 	path = bundle/vim-pathogen
 	url = git://github.com/tpope/vim-pathogen.git
-[submodule "bundle/vim-rake"]
-	path = bundle/vim-rake
-	url = git://github.com/tpope/vim-rake.git
 [submodule "bundle/vim-speeddating"]
 	path = bundle/vim-speeddating
 	url = git://github.com/tpope/vim-speeddating.git
