@@ -148,21 +148,6 @@ function! CopyFilename()
   let @* = expand("%:r") 
 endfunction
 
-command! -nargs=0 Aeql call AlignOnEqualSign()
-function! AlignOnEqualSign()
-  :Tabularize /=
-endfunction
-
-command! -nargs=0 Ahash call AlignOnHash()
-function! AlignOnHash()
-  :Tabularize /#
-endfunction
-
-command! -nargs=0 Ar call AlignOnRAssign()
-function! AlignOnRAssign()
-  :Tabularize /<-
-endfunction
-
 command! -nargs=0 DeleteEveryBuffer call DeleteEveryBuffer()
 function! DeleteEveryBuffer()
   :1,10000bd
