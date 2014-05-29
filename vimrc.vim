@@ -164,11 +164,13 @@ set directory=$HOME/.cache/vim/swap/
 
 " Pandoc 
 " -------------------------------------------------------------------
-au BufNewFile,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.txt,*.page   set filetype=markdown
+au BufNewFile,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.txt,*.page   set filetype=pandoc
 " Find the space before Pandoc footnotes
 nnoremap <leader><space> /\v^$\n[\^1\]:<CR>:let @/ = ""<CR>
 " Convert pandoc buffer to HTML and copy to system clipboard
 autocmd FileType markdown nnoremap <buffer> <C-S-x> :write \| let @+ = system("pandoc -t html " . shellescape(expand("%:p")))<CR>
+
+let g:pandoc_syntax_dont_use_conceal_for_rules = ["ellipses", "quotes", "dashes", "atx"]
 
 " Formating file
 " -------------------------------------------------------------------
