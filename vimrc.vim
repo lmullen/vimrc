@@ -1,13 +1,47 @@
 " Vim configuration for Lincoln Mullen <http://lincolnmullen.com>
 
-" Pathogen
+" Vundle plugins
 " -------------------------------------------------------------------
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+let g:vundle_default_git_proto = 'git'
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'honza/vim-snippets'
+Plugin 'rking/ag.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-vinegar'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'vim-ruby/vim-ruby'
+
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'bling/vim-airline'
+" Plugin 'chrisbra/csv.vim'
+" Plugin 'elzr/vim-json'
+" Plugin 'godlygeek/tabular'
+" Plugin 'justinmk/vim-sneak'
+" Plugin 'kien/ctrlp.vim'
+" Plugin 'majutsushi/tagbar'
+" Plugin 'marijnh/tern_for_vim'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'tpope/vim-dispatch'
+" Plugin 'tpope/vim-speeddating'
+" Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-unimpaired'
+
+call vundle#end()
+filetype plugin indent on
 
 " General 
 " -------------------------------------------------------------------
-set nocompatible
 set encoding=utf-8
 set showmode
 set showcmd
@@ -20,7 +54,6 @@ set history=1000                            " remember commands and searches
 set undolevels=100                          " use many levels of undo
 set noerrorbells                            " don't beep
 set mouse=a                                 " use mouse in console
-filetype plugin indent on                   " detect filetypes
 set nrformats-=octal
 set shiftround
 set ttimeout
@@ -38,7 +71,7 @@ set display+=lastline                       " show partial last lines
 set nolist                                  " don't display space chars
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·  " TextMate style space chars
 set scrolloff=5                             " cursor 5 lines from top or bottom
-" set number
+set number
 " Resize the splits if the vim windows is resized
 autocmd VimResized * :wincmd =
 
@@ -67,8 +100,9 @@ set statusline+=%*
 set statusline+=%#warningmsg#
 set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
 set statusline+=%*
-set statusline+=%02c,                       " cursor column
-set statusline+=%03l/%03L                   " cursor line/total lines
+" progress through file
+set statusline+=C:%02c,                       " cursor column
+set statusline+=L:%03l/%03L                   " cursor line/total lines
 set statusline+=\ %P                        " percent through file
 
 " Viminfo 
@@ -88,7 +122,7 @@ set smartcase
 " Folding
 " -------------------------------------------------------------------
 set nofoldenable
-set foldcolumn=2
+set foldcolumn=1
 nnoremap <space> za
 
 " Keyboard shortcuts
