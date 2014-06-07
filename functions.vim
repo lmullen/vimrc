@@ -127,3 +127,12 @@ function! OpenInChromeWithLocalhost()
   silent !google-chrome "http://localhost:4000/%"
 endfunction
 
+" Navigate to a Pandoc footnote 
+command! -nargs=* Fn call GoToFootnote(<f-args>)
+function! GoToFootnote(footnote, ...)
+  let definition = ''
+  if a:0 > 0
+    let definition = a:1
+  endif
+  call search('\[\^' . a:footnote . '\]' . definition)
+endfunction
