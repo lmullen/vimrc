@@ -8,34 +8,34 @@ set rtp+=~/.vim/bundle/Vundle.vim
 let g:vundle_default_git_proto = 'git'
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+
+" Plugin 'bling/vim-airline'
+" Plugin 'chrisbra/csv.vim'
+" Plugin 'elzr/vim-json'
+" Plugin 'justinmk/vim-sneak'
+" Plugin 'majutsushi/tagbar'
+" Plugin 'marijnh/tern_for_vim'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'scrooloose/syntastic'
+" Plugin 'tpope/vim-dispatch'
+" Plugin 'tpope/vim-speeddating'
 Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
+Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'vim-ruby/vim-ruby'
-
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'bling/vim-airline'
-" Plugin 'chrisbra/csv.vim'
-" Plugin 'elzr/vim-json'
-" Plugin 'godlygeek/tabular'
-" Plugin 'justinmk/vim-sneak'
-" Plugin 'kien/ctrlp.vim'
-" Plugin 'majutsushi/tagbar'
-" Plugin 'marijnh/tern_for_vim'
-" Plugin 'pangloss/vim-javascript'
-" Plugin 'tpope/vim-dispatch'
-" Plugin 'tpope/vim-speeddating'
-" Plugin 'tpope/vim-surround'
-" Plugin 'tpope/vim-unimpaired'
+" Plugin 'vim-ruby/vim-ruby'
+Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()
 filetype plugin indent on
@@ -85,9 +85,9 @@ set statusline+=\ [%Y]                      " line endings/type of file
 set statusline+=\ %{fugitive#statusline()}  " Git status
 set statusline+=%=                          " left/right separator
 " Syntastic warning
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 "display a warning if &paste is set
 set statusline+=%#error#
 set statusline+=%{&paste?'[paste]':''}
@@ -155,7 +155,7 @@ nnoremap <F8> "+p
 " -------------------------------------------------------------------
 if has('wildmenu')
   set wildmenu
-  set wildignore+=*.aux,*.bak,*.bbl,*.blg,*.class,*.doc,*.docx,*.dvi,*.fdb_latexmk,*.fls,*.idx,*.ilg,*.ind,*.out,*.png,*.pyc,*.Rout,*.rtf,*.swp,*.synctex.gz,*.toc,*/.hg/*,*/.svn/*,*.mp3,*/_site/*,*~,.DS_Store,*/public/*,*Session.vim*,*.jpeg,*.jpg,*.gif,*.svg,*.log,*.zip,*.pdf
+  set wildignore+=*.aux,*.bak,*.bbl,*.blg,*.class,*.doc,*.docx,*.dvi,*.fdb_latexmk,*.fls,*.idx,*.ilg,*.ind,*.out,*.png,*.pyc,*.Rout,*.rtf,*.swp,*.synctex.gz,*.toc,*/.hg/*,*/.svn/*,*.mp3,*/_site/*,*~,.DS_Store,*/public/*,*Session.vim*,*.jpeg,*.jpg,*.gif,*.svg,*.log,*.lof,*.zip,*.pdf,*.md.tex
   set suffixes+=*.log,*.zip,*.pdf
 endif
 
@@ -191,7 +191,8 @@ set formatoptions=tqcwn                     " see :help fo-table
 command! -nargs=0 Evimrc e $MYVIMRC
 command! -nargs=0 Svimrc source $MYVIMRC
 command! -nargs=0 Efunctions e $HOME/.vim/functions.vim
-set backup                                  " backups and swaps
+set nobackup                                  " backups and swaps
+set noswapfile
 set backupdir=$HOME/.cache/vim/backup/
 set directory=$HOME/.cache/vim/swap/
 
@@ -214,6 +215,7 @@ nnoremap <silent> <leader>= mpgg=G`p
 autocmd FileType apache set commentstring=#\ %s   "comments for Apache
 autocmd FileType r set commentstring=#\ %s        "comments for R
 autocmd FileType pandoc set commentstring=<!--\ %s\ -->   "comments for pandoc
+nmap <C-c> gcc
 
 " UltiSnips
 " -------------------------------------------------------------------
@@ -226,8 +228,8 @@ map <F5> :UltiSnipsEdit<CR>
 
 " Syntastic 
 " -------------------------------------------------------------------
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_javascript_checkers=['jshint']
+" let g:syntastic_always_populate_loc_list=1
+" let g:syntastic_javascript_checkers=['jshint']
 
 " Ctrl-P 
 " -------------------------------------------------------------------
