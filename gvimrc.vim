@@ -4,7 +4,7 @@ set guioptions-=l                           " remove scrollbars
 set guioptions-=L
 set guioptions-=r
 set guioptions-=R
-set guifont=PragmataPro\ 12
+set guifont=PragmataPro:h16
 
 " Ctrl S for gui Vim
 noremap <silent> <C-S>          :update<CR>
