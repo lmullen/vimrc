@@ -9,8 +9,11 @@ function! CleanMarkdown()
   :%s/‘/'/ge
   :%s/”/"/ge
   :%s///ge
-  " :%s/``/"/ge
-  " :%s/''/"/ge
+  :%s/``/"/ge
+  :%s/''/"/ge
+  " The space replaced below is a non-breaking space commonly used before the 
+  " colon in a title in library catalogs. It breaks pdfLaTeX.
+  :%s/ :/:/ge
 endfunction
 
 " put an en dash between number ranges
@@ -127,3 +130,12 @@ function! OpenInChromeWithLocalhost()
   silent !google-chrome "http://localhost:4000/%"
 endfunction
 
+" Navigate to a Pandoc footnote 
+command! -nargs=* Fn call GoToFootnote(<f-args>)
+function! GoToFootnote(footnote, ...)
+  let definition = ''
+  if a:0 > 0
+    let definition = a:1
+  endif
+  call search('\[\^' . a:footnote . '\]' . definition)
+endfunction
