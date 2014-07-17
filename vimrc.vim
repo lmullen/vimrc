@@ -17,7 +17,7 @@ call vundle#begin()
 " Plugin 'marijnh/tern_for_vim'
 " Plugin 'pangloss/vim-javascript'
 " Plugin 'scrooloose/syntastic'
-" Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-dispatch'
 " Plugin 'tpope/vim-speeddating'
 Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
@@ -56,8 +56,8 @@ set noerrorbells                            " don't beep
 set mouse=a                                 " use mouse in console
 set nrformats-=octal
 set shiftround
-set ttimeout
-set ttimeoutlen=50
+set timeoutlen=2000
+set ttimeoutlen=10
 set autoread
 au FocusLost * :wa                          " save when losing focus (gVim)
 
@@ -196,6 +196,10 @@ set noswapfile
 set backupdir=$HOME/.cache/vim/backup/
 set directory=$HOME/.cache/vim/swap/
 
+" Solarized
+" -------------------------------------------------------------------
+let g:solarized_menu=0
+
 " Pandoc 
 " -------------------------------------------------------------------
 au BufNewFile,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.txt,*.page   set filetype=pandoc
@@ -252,4 +256,8 @@ nnoremap <leader>t= :Tabularize /=<CR>
 nnoremap <leader>t, :Tabularize /,<CR>
 nnoremap <leader>t: :Tabularize /:\zs<CR>
 nnoremap <leader>t# :Tabularize /#\zs<CR>
+
+" Ag
+" -------------------------------------------------------------------
+let g:agprg="ag --column --smart-case"
 
