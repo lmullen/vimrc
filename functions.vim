@@ -139,3 +139,19 @@ function! GoToFootnote(footnote, ...)
   endif
   call search('\[\^' . a:footnote . '\]' . definition)
 endfunction
+
+command! -nargs=0 AbbreviateMonths call AbbreviateMonths()
+function! AbbreviateMonths()
+  :%s/January/Jan./g
+  :%s/February/Feb./g
+  :%s/March/Mar./g
+  :%s/April/Apr./g
+  :%s/May/May/g
+  :%s/June/June/g
+  :%s/July/July/g
+  :%s/August/Aug./g
+  :%s/September/Sept./g
+  :%s/October/Oct./g
+  :%s/November/Nov./g
+  :%s/December/Dec./g
+endfunction

@@ -8,7 +8,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 let g:vundle_default_git_proto = 'git'
 call vundle#begin()
 
-
 " Plugin 'bling/vim-airline'
 " Plugin 'chrisbra/csv.vim'
 " Plugin 'elzr/vim-json'
@@ -17,25 +16,8 @@ call vundle#begin()
 " Plugin 'marijnh/tern_for_vim'
 " Plugin 'pangloss/vim-javascript'
 " Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-dispatch'
+" Plugin 'tpope/vim-dispatch'
 " Plugin 'tpope/vim-speeddating'
-Plugin 'SirVer/ultisnips'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'honza/vim-snippets'
-Plugin 'kien/ctrlp.vim'
-Plugin 'rking/ag.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-obsession'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-vinegar'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'kien/ctrlp.vim'
-
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'bling/vim-airline'
 " Plugin 'chrisbra/csv.vim'
@@ -50,7 +32,23 @@ Plugin 'kien/ctrlp.vim'
 " Plugin 'tpope/vim-surround'
 " Plugin 'tpope/vim-unimpaired'
 " Plugin 'vim-ruby/vim-ruby'
+Plugin 'SirVer/ultisnips'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'honza/vim-snippets'
+Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-vinegar'
 Plugin 'sheerun/vim-polyglot'
+" Plugin 'vim-pandoc/vim-pandoc-syntax'
 
 call vundle#end()
 filetype plugin indent on
@@ -80,7 +78,7 @@ au FocusLost * :wa                          " save when losing focus (gVim)
 " -------------------------------------------------------------------
 set t_Co=16                                 " color terminal
 syntax enable                               " syntax highlighting
-set background=dark
+set background=light
 colorscheme solarized
 set display+=lastline                       " show partial last lines
 set nolist                                  " don't display space chars
@@ -217,12 +215,12 @@ let g:solarized_menu=0
 
 " Pandoc 
 " -------------------------------------------------------------------
-au BufNewFile,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.txt,*.page   set filetype=pandoc
+au BufNewFile,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.txt,*.page   set filetype=markdown
 " Find the space before Pandoc footnotes
 nnoremap <leader><space> /\v^$\n[\^1\]:<CR>:let @/ = ""<CR>
 " Convert pandoc buffer to HTML and copy to system clipboard
 autocmd FileType markdown nnoremap <buffer> <C-S-x> :write \| let @+ = system("pandoc -t html " . shellescape(expand("%:p")))<CR>
-let g:pandoc_use_conceal = 0
+let g:pandoc#syntax#conceal#use = 0
 
 " Formating file
 " -------------------------------------------------------------------

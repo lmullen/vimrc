@@ -13,3 +13,5 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 
 " Ctrl Z undoes rather than minimizes
 noremap <C-z> u
+
+set background=dark
