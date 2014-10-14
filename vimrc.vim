@@ -15,7 +15,7 @@ call vundle#begin()
 " Plugin 'majutsushi/tagbar'
 " Plugin 'marijnh/tern_for_vim'
 " Plugin 'pangloss/vim-javascript'
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 " Plugin 'tpope/vim-dispatch'
 " Plugin 'tpope/vim-speeddating'
 " Plugin 'Valloric/YouCompleteMe'
@@ -26,7 +26,6 @@ call vundle#begin()
 " Plugin 'justinmk/vim-sneak'
 " Plugin 'majutsushi/tagbar'
 " Plugin 'marijnh/tern_for_vim'
-" Plugin 'pangloss/vim-javascript'
 " Plugin 'tpope/vim-dispatch'
 " Plugin 'tpope/vim-speeddating'
 " Plugin 'tpope/vim-surround'
@@ -35,7 +34,7 @@ call vundle#begin()
 Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'godlygeek/tabular'
+" Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
@@ -43,12 +42,13 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
-Plugin 'tpope/vim-rake'
+" Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'sheerun/vim-polyglot'
 " Plugin 'vim-pandoc/vim-pandoc-syntax'
+" Plugin 'pangloss/vim-javascript'
 
 call vundle#end()
 filetype plugin indent on
@@ -245,8 +245,8 @@ map <F5> :UltiSnipsEdit<CR>
 
 " Syntastic 
 " -------------------------------------------------------------------
-" let g:syntastic_always_populate_loc_list=1
-" let g:syntastic_javascript_checkers=['jshint']
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_javascript_checkers=['jshint']
 
 " Ctrl-P 
 " -------------------------------------------------------------------
