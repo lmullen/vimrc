@@ -1,11 +1,13 @@
-
-
 snippet libd3 "Script link to d3.js"
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 endsnippet
 
 snippet libtopojson "Script link to topojson.js"
 <script src="http://d3js.org/topojson.v1.min.js" charset="utf-8"></script>
+endsnippet
+
+snippet libprojection "Script link for extended projections"
+<script src="http://d3js.org/d3.geo.projection.v0.min.js" charset="utf-8"></script>
 endsnippet
 
 snippet libleaflet "Leaflet library"
@@ -88,20 +90,23 @@ snippet template-standalone "Standalone template for a Leaflet/D3 project"
 endsnippet
 
 
-snippet template-gist "Gist template for a D3 visualization"
+snippet gist "Gist template for a D3 visualization"
 <!DOCTYPE html>
 <html> 
-<head>
-<meta charset="utf-8">
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<style>
-
-</style>
-</head>
-<body>
-<div id="viz"></div>
-<script src="visualization.js"></script>
-</body>
+  <head>
+    <title> </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://rawgit.com/emeeks/d3-carto-map/master/d3map.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="viz">earlier text</div>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
+    <script src="https://rawgit.com/emeeks/d3-carto-map/master/d3.carto.map.js"></script>
+    <script src="visualization.js"></script>
+  </body>
 </html>
 endsnippet
 
@@ -117,4 +122,63 @@ snippet row "Row in Foundation"
 	</div>
 </div>
 endsnippet
+ 
+snippet p "<p>"
+<p>
+	$0
+</p>
+endsnippet
 
+snippet section "<section>"
+<section>
+  $0
+</section>
+endsnippet
+
+
+snippet sectiont "<section>"
+<section class="text">
+  $0
+</section>
+endsnippet
+
+snippet sectionb "<section>"
+<section class="big">
+  $0
+</section>
+endsnippet
+
+snippet sectionl "<section> with list"
+<section>
+  <h2>$1</h2>
+  <ul>
+		<li>$2</li>
+  </ul>
+</section>
+endsnippet
+
+snippet a "Link" w
+<a href="${1}">${2:Anchor Text}</a>
+endsnippet
+
+snippet scriptb "Script in Bower"
+<script src="lib/${1}" charset="utf-8"></script>
+endsnippet
+
+snippet bgimg "Background image in section"
+<section style="background:url($1);
+  background-color:#fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;">
+</section>
+endsnippet
+
+snippet spanc "Span caption"
+<span class="caption">
+Source:
+<a href="$1">
+$2
+</a>
+</span>
+endsnippet
