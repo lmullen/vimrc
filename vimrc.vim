@@ -14,9 +14,8 @@ call vundle#begin()
 " Plugin 'justinmk/vim-sneak'
 " Plugin 'majutsushi/tagbar'
 " Plugin 'marijnh/tern_for_vim'
-" Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
-" Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-dispatch'
 " Plugin 'tpope/vim-speeddating'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'bling/vim-airline'
@@ -43,12 +42,16 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
 " Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'sheerun/vim-polyglot'
 " Plugin 'vim-pandoc/vim-pandoc-syntax'
-" Plugin 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
+
+" Testing
+" Plugin 'airblade/vim-gitgutter'
+Plugin 'othree/html5.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -78,12 +81,12 @@ au FocusLost * :wa                          " save when losing focus (gVim)
 " -------------------------------------------------------------------
 set t_Co=16                                 " color terminal
 syntax enable                               " syntax highlighting
-set background=light
+set background=dark
 colorscheme solarized
 set display+=lastline                       " show partial last lines
 set nolist                                  " don't display space chars
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·  " TextMate style space chars
-set scrolloff=5                             " cursor 5 lines from top or bottom
+set scrolloff=1
 set number
 " Resize the splits if the vim windows is resized
 autocmd VimResized * :wincmd =
@@ -98,9 +101,9 @@ set statusline+=\ [%Y]                      " line endings/type of file
 set statusline+=\ %{fugitive#statusline()}  " Git status
 set statusline+=%=                          " left/right separator
 " Syntastic warning
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 "display a warning if &paste is set
 set statusline+=%#error#
 set statusline+=%{&paste?'[paste]':''}
@@ -160,7 +163,7 @@ nnoremap [N ?\V[^\d\+]<CR>
 " Copying and pasting
 imap <C-v> <C-r><C-o>+
 imap <C-c> <CR><Esc>O
-vnoremap <C-C> "+y
+" vnoremap <C-C> "+y
 vnoremap <F7> "+y
 nnoremap <F8> "+p
 
@@ -168,7 +171,7 @@ nnoremap <F8> "+p
 " -------------------------------------------------------------------
 if has('wildmenu')
   set wildmenu
-  set wildignore+=*.aux,*.bak,*.bbl,*.blg,*.class,*.doc,*.docx,*.dvi,*.fdb_latexmk,*.fls,*.idx,*.ilg,*.ind,*.out,*.png,*.pyc,*.Rout,*.rtf,*.swp,*.synctex.gz,*.toc,*/.hg/*,*/.svn/*,*.mp3,*/_site/*,*~,.DS_Store,*/public/*,*Session.vim*,*.jpeg,*.jpg,*.gif,*.svg,*.log,*.lof,*.zip,*.pdf,*.md.tex
+  set wildignore+=*.aux,*.bak,*.bbl,*.blg,*.class,*.doc,*.docx,*.dvi,*.fdb_latexmk,*.fls,*.idx,*.ilg,*.ind,*.out,*.png,*.pyc,*.Rout,*.rtf,*.swp,*.synctex.gz,*.toc,*/.hg/*,*/.svn/*,*.mp3,*/_site/*,*~,.DS_Store,*/public/*,*Session.vim*,*.jpeg,*.jpg,*.gif,*.svg,*.log,*.lof,*.zip,*.pdf,*.md.tex,*/node_modules/*,*/lib/*
   set suffixes+=*.log,*.zip,*.pdf
 endif
 
@@ -186,6 +189,7 @@ command! -nargs=0 Abbr sp $HOME/.vim/abbreviations.vim
 " Text formatting 
 " -------------------------------------------------------------------
 set wrap                                    " soft wrap long lines
+set linebreak
 set textwidth=78
 set tabstop=2                               " a tab is two spaces
 set softtabstop=2                           " soft tab is two spaces

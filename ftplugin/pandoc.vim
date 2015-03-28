@@ -1,8 +1,9 @@
 " Correct text width
-setlocal textwidth=72
+" setlocal textwidth=72
+setlocal textwidth=0
 
 " filter text through pandoc to clean markdown, using reference links and atx headers
-setlocal equalprg=pandoc\ -t\ markdown\ --reference-links\ --atx-headers\ --standalone
+setlocal equalprg=pandoc\ -t\ markdown\ --atx-headers\ --standalone\ --no-wrap
 
 " Add all tags in the style {TODO: description} or {PAGE} in current document 
 " to quickfix list
