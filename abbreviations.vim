@@ -21,3 +21,5 @@ iab eemail lincoln@lincolnmullen.com
 iab pphone 978-877-7549
 iab xn Christian
 iab xty Christianity
+iab ldquo &ldquo;
+iab rdquo &rdquo;
