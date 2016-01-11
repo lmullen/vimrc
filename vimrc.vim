@@ -8,6 +8,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 let g:vundle_default_git_proto = 'git'
 call vundle#begin()
 
+Plugin 'gmarik/Vundle.vim'
 " Plugin 'bling/vim-airline'
 " Plugin 'chrisbra/csv.vim'
 " Plugin 'elzr/vim-json'
@@ -32,7 +33,6 @@ Plugin 'tpope/vim-dispatch'
 " Plugin 'vim-ruby/vim-ruby'
 Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'gmarik/Vundle.vim'
 " Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
@@ -49,9 +49,13 @@ Plugin 'sheerun/vim-polyglot'
 " Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'pangloss/vim-javascript'
 
+
 " Testing
 " Plugin 'airblade/vim-gitgutter'
 Plugin 'othree/html5.vim'
+Plugin 'tpope/vim-characterize'
+Plugin 'wincent/terminus'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -86,7 +90,7 @@ colorscheme solarized
 set display+=lastline                       " show partial last lines
 set nolist                                  " don't display space chars
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·  " TextMate style space chars
-set scrolloff=1
+set scrolloff=0
 set number
 " Resize the splits if the vim windows is resized
 autocmd VimResized * :wincmd =
@@ -219,12 +223,18 @@ let g:solarized_menu=0
 
 " Pandoc 
 " -------------------------------------------------------------------
-au BufNewFile,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.txt,*.page   set filetype=markdown
+au BufNewFile,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.txt,*.Rmd   set filetype=markdown
 " Find the space before Pandoc footnotes
 nnoremap <leader><space> /\v^$\n[\^1\]:<CR>:let @/ = ""<CR>
 " Convert pandoc buffer to HTML and copy to system clipboard
 autocmd FileType markdown nnoremap <buffer> <C-S-x> :write \| let @+ = system("pandoc -t html " . shellescape(expand("%:p")))<CR>
 let g:pandoc#syntax#conceal#use = 0
+
+" CSVs
+" -------------------------------------------------------------------
+au BufNewFile,BufRead *.csv set filetype=CSV
+autocmd FileType CSV set nowrap textwidth=0 wrapmargin=0
+
 
 " Formating file
 " -------------------------------------------------------------------
@@ -240,6 +250,7 @@ nmap <C-c> gcc
 
 " UltiSnips
 " -------------------------------------------------------------------
+let g:UltiSnipsUsePythonVersion = 2
 let g:UltiSnipsEditSplit = 'horizontal'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -276,5 +287,5 @@ nnoremap <leader>t# :Tabularize /#\zs<CR>
 
 " Ag
 " -------------------------------------------------------------------
-let g:agprg="ag --column --smart-case"
+let g:ag_prg="ag --column --smart-case"
 

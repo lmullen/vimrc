@@ -1,3 +1,19 @@
 snippet phony "Phony target"
 .PHONY : ${1:clean}
 endsnippet
+
+snippet mdmake "Makefile for Pandoc markdown"
+PDFS := $(patsubst %.md, %.md.pdf, $(wildcard *.md))
+
+all : $(PDFS)
+
+%.md.pdf : %.md
+	pandoc $< -o $@
+
+clean :
+	rm $(PDFS)
+
+rebuild : clean all
+
+endsnippet
+

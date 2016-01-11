@@ -20,6 +20,7 @@ iab chps chapters
 iab eemail lincoln@lincolnmullen.com
 iab pphone 978-877-7549
 iab xn Christian
+iab xns Christians
 iab xty Christianity
 iab ldquo &ldquo;
 iab rdquo &rdquo;

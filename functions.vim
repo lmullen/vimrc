@@ -155,3 +155,10 @@ function! AbbreviateMonths()
   :%s/November/Nov./g
   :%s/December/Dec./g
 endfunction
+
+" For `test.md`, open the file `test.md.pdf` in the operating system
+command! -nargs=0 PDF call PDF()
+function! PDF()
+  :silent exec "!open ".expand("%:p").".pdf"
+endfunction
+
