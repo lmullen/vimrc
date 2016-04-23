@@ -22,71 +22,6 @@ function! EnDashRange()
   :%s/\v(\d)-(\d)/\1--\2/ge
 endfunction
 
-function! CleanJSRFootnotes()
-  :%s/\v\^\[\[(\d+)\]\]\(\#ftnt\d+\)\^/[^\1]/ge
-  :%s/\v\[\[(\d+)\]\]\(\#ftnt_ref\d+\)/[^\1]: /ge
-endfunction
-
-nnoremap _jsr :call CleanJSR()<CR>
-function! CleanJSR()
-  " replace non-breaking spaces with regular spaces
-  :%s/ / /ge
-  :%s/^\s\+//e
-  " remove problems with * , in footnotes
-  :%s/\V* ,/*,/ge
-  " remove problems with *( in footnotes and titles
-  :%s/\V*(/* (/ge
-  call CleanJSRFootnotes()
-  call CleanMarkdown()
-  call EnDashRange()
-endfunction
-
-function! CleanT2()
-  :%s/\v\’/'/ge
-  :%s/\v\“/``/ge
-  :%s/\v\‘/`/ge
-  :%s/\v\”/''/ge
-  :%s/\v```/``\\,`/ge
-  :%s/\v'''/'\\,''/ge
-  :%s/\v(\d)-(\d)/\1--\2/ge
-  :%s/\v\—/---/ge
-  :%s/\v\–/--/ge
-  :%s/\v\•/\\item/ge
-  :%s/\v\…/\\dots/ge
-endfunction
-
-function! Patristics()
-  :%s/\vDecember/Dec./ge
-  :%s/\vJanuary/Jan./ge
-  :%s/\vFebruary/Feb./ge
-  :%s/\vMarch/Mar./ge
-  :%s/\vApril/Apr./ge
-  :%s/\vAugust/Aug./ge
-  :%s/\vSeptember/Sept./ge
-  :%s/\vOctober/Oct./ge
-  :%s/\vNovember/Nov./ge
-  " :%s/\V<td class="hd">\n<p style='height:16px;'>.<\/p>\n<\/td>\n// 
-  " :%s/\V dir='ltr' class='s\d'//
-  " :%s/\V<td><\/td>\n//
-  " :%s/\V class='s2'//
-  " :%s/\v\&lt\;/</ge
-  " :%s/\v\&gt\;/>/ge
-endfunction
-
-" Commit all changes in research wiki
-command! -nargs=0 WikiCommit call CommitToWiki()
-function! CommitToWiki()
-  :silent !cd ~/acad/research && rake wiki
-  :redraw!
-endfunction
-
-" Push all changes in research wiki
-command! -nargs=0 WikiPush call PushWiki()
-function! PushWiki()
-  :silent !cd ~/acad/research && rake pushwiki
-  :redraw!
-endfunction
-
 command! -nargs=0 BG call ToggleBackground()
 function! ToggleBackground()
   if &background == "dark"
@@ -94,18 +29,6 @@ function! ToggleBackground()
   else
     set background=dark
   endif
-endfunction
-
-" Add Omeka's tags
-command! -nargs=0 Omeka call OmekaSetup()
-function! OmekaSetup()
-  set tags+=~/dev/Omeka/.git/tags
-endfunction
-
-" Open the current note file in the browser
-command! -nargs=0 Wo call OpenCurrentNoteInWiki()
-function! OpenCurrentNoteInWiki()
-  silent !xdg-open "http://localhost:5001/%:r"
 endfunction
 
 command! -nargs=0 DeleteEveryBuffer call DeleteEveryBuffer()
@@ -146,9 +69,9 @@ function! AbbreviateMonths()
   :%s/February/Feb./g
   :%s/March/Mar./g
   :%s/April/Apr./g
-  :%s/May/May/g
-  :%s/June/June/g
-  :%s/July/July/g
+  " :%s/May/May/g
+  " :%s/June/June/g
+  " :%s/July/July/g
   :%s/August/Aug./g
   :%s/September/Sept./g
   :%s/October/Oct./g
