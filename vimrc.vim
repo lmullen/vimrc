@@ -8,54 +8,49 @@ set rtp+=~/.vim/bundle/Vundle.vim
 let g:vundle_default_git_proto = 'git'
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
-" Plugin 'bling/vim-airline'
-" Plugin 'chrisbra/csv.vim'
-" Plugin 'elzr/vim-json'
-" Plugin 'justinmk/vim-sneak'
-" Plugin 'majutsushi/tagbar'
-" Plugin 'marijnh/tern_for_vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-dispatch'
-" Plugin 'tpope/vim-speeddating'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'bling/vim-airline'
+" Plugin 'bling/vim-airline'
+" Plugin 'chrisbra/csv.vim'
 " Plugin 'chrisbra/csv.vim'
 " Plugin 'elzr/vim-json'
+" Plugin 'elzr/vim-json'
+" Plugin 'godlygeek/tabular'
 " Plugin 'godlygeek/tabular'
 " Plugin 'justinmk/vim-sneak'
+" Plugin 'justinmk/vim-sneak'
+" Plugin 'majutsushi/tagbar'
 " Plugin 'majutsushi/tagbar'
 " Plugin 'marijnh/tern_for_vim'
+" Plugin 'marijnh/tern_for_vim'
 " Plugin 'tpope/vim-dispatch'
+" Plugin 'tpope/vim-rake'
+" Plugin 'tpope/vim-speeddating'
 " Plugin 'tpope/vim-speeddating'
 " Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-surround'
 " Plugin 'tpope/vim-unimpaired'
+" Plugin 'vim-pandoc/vim-pandoc-syntax'
 " Plugin 'vim-ruby/vim-ruby'
 Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
-" Plugin 'godlygeek/tabular'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
 Plugin 'rking/ag.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-characterize'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
-" Plugin 'tpope/vim-rake'
-" Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
-Plugin 'sheerun/vim-polyglot'
-" Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'pangloss/vim-javascript'
-
-
-" Testing
-" Plugin 'airblade/vim-gitgutter'
-Plugin 'othree/html5.vim'
-Plugin 'tpope/vim-characterize'
 Plugin 'wincent/terminus'
-
 
 call vundle#end()
 filetype plugin indent on
@@ -175,7 +170,7 @@ nnoremap <F8> "+p
 " -------------------------------------------------------------------
 if has('wildmenu')
   set wildmenu
-  set wildignore+=*.aux,*.bak,*.bbl,*.blg,*.class,*.doc,*.docx,*.dvi,*.fdb_latexmk,*.fls,*.idx,*.ilg,*.ind,*.out,*.png,*.pyc,*.Rout,*.rtf,*.swp,*.synctex.gz,*.toc,*/.hg/*,*/.svn/*,*.mp3,*/_site/*,*~,.DS_Store,*/public/*,*Session.vim*,*.jpeg,*.jpg,*.gif,*.svg,*.log,*.lof,*.zip,*.pdf,*.md.tex,*/node_modules/*,*/lib/*
+  set wildignore+=*.aux,*.bak,*.bbl,*.blg,*.class,*.doc,*.docx,*.dvi,*.fdb_latexmk,*.fls,*.idx,*.ilg,*.ind,*.out,*.png,*.pyc,*.Rout,*.rtf,*.swp,*.synctex.gz,*.toc,*/.hg/*,*/.svn/*,*.mp3,*/_site/*,*/_site-preview/*,*/_site-deploy/*,*~,.DS_Store,*/public/*,*Session.vim*,*.jpeg,*.jpg,*.gif,*.svg,*.log,*.lof,*.zip,*.pdf,*.md.tex,*/node_modules/*,*/lib/*
   set suffixes+=*.log,*.zip,*.pdf
 endif
 
