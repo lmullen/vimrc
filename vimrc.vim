@@ -31,7 +31,7 @@ Plugin 'tpope/vim-dispatch'
 " Plugin 'tpope/vim-surround'
 " Plugin 'tpope/vim-unimpaired'
 " Plugin 'vim-ruby/vim-ruby'
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
 " Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
@@ -83,8 +83,9 @@ au FocusLost * :wa                          " save when losing focus (gVim)
 
 " Display
 " -------------------------------------------------------------------
-set t_Co=16                                 " color terminal
+set t_Co=16                                " color terminal
 syntax enable                               " syntax highlighting
+let g:solarized_termcolors=16
 set background=dark
 colorscheme solarized
 set display+=lastline                       " show partial last lines
@@ -288,4 +289,5 @@ nnoremap <leader>t# :Tabularize /#\zs<CR>
 " Ag
 " -------------------------------------------------------------------
 let g:ag_prg="ag --column --smart-case"
+
 
