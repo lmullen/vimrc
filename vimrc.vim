@@ -71,8 +71,8 @@ set noerrorbells                            " don't beep
 set mouse=a                                 " use mouse in console
 set nrformats-=octal
 set shiftround
-set timeoutlen=2000
-set ttimeoutlen=10
+set timeoutlen=0
+set ttimeoutlen=0
 set autoread
 au FocusLost * :wa                          " save when losing focus (gVim)
 
