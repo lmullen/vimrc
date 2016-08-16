@@ -30,9 +30,9 @@ call vundle#begin()
 " Plugin 'tpope/vim-surround'
 " Plugin 'tpope/vim-surround'
 " Plugin 'tpope/vim-unimpaired'
-" Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 " Plugin 'vim-ruby/vim-ruby'
-" Plugin 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'honza/vim-snippets'
@@ -71,8 +71,8 @@ set noerrorbells                            " don't beep
 set mouse=a                                 " use mouse in console
 set nrformats-=octal
 set shiftround
-set timeoutlen=0
-set ttimeoutlen=0
+set timeoutlen=500
+set ttimeoutlen=200
 set autoread
 au FocusLost * :wa                          " save when losing focus (gVim)
 
@@ -171,7 +171,7 @@ nnoremap <F8> "+p
 " -------------------------------------------------------------------
 if has('wildmenu')
   set wildmenu
-  set wildignore+=*.aux,*.bak,*.bbl,*.blg,*.class,*.doc,*.docx,*.dvi,*.fdb_latexmk,*.fls,*.idx,*.ilg,*.ind,*.out,*.png,*.pyc,*.Rout,*.rtf,*.swp,*.synctex.gz,*.toc,*/.hg/*,*/.svn/*,*.mp3,*/_site/*,*/_site-preview/*,*/_site-deploy/*,*~,.DS_Store,*/public/*,*Session.vim*,*.jpeg,*.jpg,*.gif,*.svg,*.log,*.lof,*.zip,*.pdf,*.md.tex,*/node_modules/*,*/lib/*
+  set wildignore+=*.aux,*.bak,*.bbl,*.blg,*.class,*.doc,*.docx,*.dvi,*.fdb_latexmk,*.fls,*.idx,*.ilg,*.ind,*.out,*.png,*.pyc,*.Rout,*.rtf,*.swp,*.synctex.gz,*.toc,*/.hg/*,*/.svn/*,*.mp3,*/_site/*,*/_site-preview/*,*/_site-deploy/*,*~,.DS_Store,*/public/*,*Session.vim*,*.jpeg,*.jpg,*.gif,*.svg,*.log,*.lof,*.zip,*.pdf,*.md.tex,*/node_modules/*,*/lib/*,*data-raw/*,*legal-codes-split/*
   set suffixes+=*.log,*.zip,*.pdf
 endif
 
@@ -219,7 +219,7 @@ let g:solarized_menu=0
 
 " Pandoc 
 " -------------------------------------------------------------------
-au BufNewFile,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.txt,*.Rmd   set filetype=markdown
+au BufNewFile,BufFilePRe,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.txt,*.Rmd   set filetype=markdown.pandoc
 " Find the space before Pandoc footnotes
 nnoremap <leader><space> /\v^$\n[\^1\]:<CR>:let @/ = ""<CR>
 " Convert pandoc buffer to HTML and copy to system clipboard
@@ -246,7 +246,7 @@ nmap <C-c> gcc
 
 " UltiSnips
 " -------------------------------------------------------------------
-let g:UltiSnipsUsePythonVersion = 2
+" let g:UltiSnipsUsePythonVersion = 2
 let g:UltiSnipsEditSplit = 'horizontal'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
