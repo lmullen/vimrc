@@ -8,41 +8,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 let g:vundle_default_git_proto = 'git'
 call vundle#begin()
 
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'bling/vim-airline'
-" Plugin 'bling/vim-airline'
-" Plugin 'chrisbra/csv.vim'
-" Plugin 'chrisbra/csv.vim'
-" Plugin 'elzr/vim-json'
-" Plugin 'elzr/vim-json'
-" Plugin 'godlygeek/tabular'
-" Plugin 'godlygeek/tabular'
-" Plugin 'justinmk/vim-sneak'
-" Plugin 'justinmk/vim-sneak'
-" Plugin 'majutsushi/tagbar'
-" Plugin 'majutsushi/tagbar'
-" Plugin 'marijnh/tern_for_vim'
-" Plugin 'marijnh/tern_for_vim'
-" Plugin 'tpope/vim-dispatch'
-" Plugin 'tpope/vim-rake'
-" Plugin 'tpope/vim-speeddating'
-" Plugin 'tpope/vim-speeddating'
-" Plugin 'tpope/vim-surround'
-" Plugin 'tpope/vim-surround'
-" Plugin 'tpope/vim-unimpaired'
-" Plugin 'vim-pandoc/vim-pandoc-syntax'
-" Plugin 'vim-ruby/vim-ruby'
-" Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'honza/vim-snippets'
-Plugin 'kien/ctrlp.vim'
-Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'tpope/vim-characterize'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-eunuch'
@@ -50,6 +22,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'wincent/terminus'
 
 call vundle#end()
@@ -163,15 +136,12 @@ nnoremap [N ?\V[^\d\+]<CR>
 " Copying and pasting
 imap <C-v> <C-r><C-o>+
 imap <C-c> <CR><Esc>O
-" vnoremap <C-C> "+y
-vnoremap <F7> "+y
-nnoremap <F8> "+p
 
 " Tab completion
 " -------------------------------------------------------------------
 if has('wildmenu')
   set wildmenu
-  set wildignore+=*.aux,*.bak,*.bbl,*.blg,*.class,*.doc,*.docx,*.dvi,*.fdb_latexmk,*.fls,*.idx,*.ilg,*.ind,*.out,*.png,*.pyc,*.Rout,*.rtf,*.swp,*.synctex.gz,*.toc,*/.hg/*,*/.svn/*,*.mp3,*/_site/*,*/_site-preview/*,*/_site-deploy/*,*~,.DS_Store,*/public/*,*Session.vim*,*.jpeg,*.jpg,*.gif,*.svg,*.log,*.lof,*.zip,*.pdf,*.md.tex,*/node_modules/*,*/lib/*
+  set wildignore+=*.aux,*.bak,*.bbl,*.blg,*.class,*.doc,*.docx,*.dvi,*.fdb_latexmk,*.fls,*.idx,*.ilg,*.ind,*.out,*.png,*.pyc,*.Rout,*.rtf,*.swp,*.synctex.gz,*.toc,*/.hg/*,*/.svn/*,*.mp3,*/_site/*,*/_site-preview/*,*/_site-deploy/*,*~,.DS_Store,*/public/*,*Session.vim*,*.jpeg,*.jpg,*.gif,*.svg,*.log,*.lof,*.zip,*.pdf,*.md.tex,*/node_modules/*,*/lib/*,*data-raw/*,*legal-codes-split/*
   set suffixes+=*.log,*.zip,*.pdf
 endif
 
@@ -219,7 +189,7 @@ let g:solarized_menu=0
 
 " Pandoc 
 " -------------------------------------------------------------------
-au BufNewFile,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.txt,*.Rmd   set filetype=markdown
+au BufNewFile,BufFilePRe,BufRead *.markdown,*.md,*.mkd,*.pd,*.pdc,*.pdk,*.pandoc,*.text,*.txt,*.Rmd   set filetype=markdown.pandoc
 " Find the space before Pandoc footnotes
 nnoremap <leader><space> /\v^$\n[\^1\]:<CR>:let @/ = ""<CR>
 " Convert pandoc buffer to HTML and copy to system clipboard
@@ -230,7 +200,6 @@ let g:pandoc#syntax#conceal#use = 0
 " -------------------------------------------------------------------
 au BufNewFile,BufRead *.csv set filetype=CSV
 autocmd FileType CSV set nowrap textwidth=0 wrapmargin=0
-
 
 " Formating file
 " -------------------------------------------------------------------
@@ -247,13 +216,10 @@ nmap <C-c> gcc
 
 " UltiSnips
 " -------------------------------------------------------------------
-let g:UltiSnipsUsePythonVersion = 2
 let g:UltiSnipsEditSplit = 'horizontal'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" let g:UltiSnipsNoPythonWarning = 1
-map <F5> :UltiSnipsEdit<CR>
 
 " Syntastic 
 " -------------------------------------------------------------------
@@ -264,23 +230,11 @@ let g:syntastic_javascript_checkers=['jshint']
 " -------------------------------------------------------------------
 let g:ctrlp_open_new_file = 'r'             " open new files in same window
 nnoremap <C-B> :CtrlPBuffer<CR>
-nnoremap <C-n> :CtrlPTag<cr>
 let g:ctrlp_use_caching = 0
 let g:ctrlp_clear_cache_on_exit = 1         
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_dotfiles = 0                    " ignore dotfiles and dotdirs
 let g:ctrlp_custom_ignore = { 'dir': '\.git$\|\_site$' }
-
-" TagBar
-" -------------------------------------------------------------------
-map <F3> :TagbarToggle<CR>
-
-" Tabular
-" -------------------------------------------------------------------
-nnoremap <leader>t= :Tabularize /=<CR>
-nnoremap <leader>t, :Tabularize /,<CR>
-nnoremap <leader>t: :Tabularize /:\zs<CR>
-nnoremap <leader>t# :Tabularize /#\zs<CR>
 
 " Ag
 " -------------------------------------------------------------------
