@@ -71,8 +71,8 @@ set noerrorbells                            " don't beep
 set mouse=a                                 " use mouse in console
 set nrformats-=octal
 set shiftround
-set timeoutlen=0
-set ttimeoutlen=0
+set timeoutlen=250
+set ttimeoutlen=100
 set autoread
 au FocusLost * :wa                          " save when losing focus (gVim)
 
@@ -240,6 +240,7 @@ nnoremap <silent> <leader>= mpgg=G`p
 " Commentary.vim 
 " -------------------------------------------------------------------
 autocmd FileType apache set commentstring=#\ %s   "comments for Apache
+autocmd FileType make set commentstring=#\ %s   "comments for Makefile
 autocmd FileType r set commentstring=#\ %s        "comments for R
 autocmd FileType pandoc set commentstring=<!--\ %s\ -->   "comments for pandoc
 nmap <C-c> gcc
