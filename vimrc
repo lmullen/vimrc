@@ -215,6 +215,7 @@ autocmd FileType make set commentstring=#\ %s   "comments for Makefile
 autocmd FileType r set commentstring=#\ %s        "comments for R
 autocmd FileType pandoc set commentstring=<!--\ %s\ -->   "comments for pandoc
 nmap <C-c> gcc
+vmap <C-c> gcc
 
 " UltiSnips
 " -------------------------------------------------------------------
